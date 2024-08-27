@@ -22,33 +22,72 @@ Partial Class Productos
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.dgvProductos = New System.Windows.Forms.DataGridView()
+        Me.btnAgregar = New System.Windows.Forms.Button()
+        Me.btnModificar = New System.Windows.Forms.Button()
+        Me.btnEliminar = New System.Windows.Forms.Button()
+        CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'dgvProductos
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 12)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersWidth = 82
-        Me.DataGridView1.RowTemplate.Height = 33
-        Me.DataGridView1.Size = New System.Drawing.Size(1117, 441)
-        Me.DataGridView1.TabIndex = 1
+        Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvProductos.Location = New System.Drawing.Point(12, 12)
+        Me.dgvProductos.MultiSelect = False
+        Me.dgvProductos.Name = "dgvProductos"
+        Me.dgvProductos.ReadOnly = True
+        Me.dgvProductos.RowHeadersWidth = 82
+        Me.dgvProductos.RowTemplate.Height = 33
+        Me.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvProductos.Size = New System.Drawing.Size(1117, 441)
+        Me.dgvProductos.TabIndex = 1
+        '
+        'btnAgregar
+        '
+        Me.btnAgregar.Location = New System.Drawing.Point(12, 459)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(160, 57)
+        Me.btnAgregar.TabIndex = 2
+        Me.btnAgregar.Text = "Agregar"
+        Me.btnAgregar.UseVisualStyleBackColor = True
+        '
+        'btnModificar
+        '
+        Me.btnModificar.Location = New System.Drawing.Point(178, 459)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(160, 57)
+        Me.btnModificar.TabIndex = 3
+        Me.btnModificar.Text = "Modificar"
+        Me.btnModificar.UseVisualStyleBackColor = True
+        '
+        'btnEliminar
+        '
+        Me.btnEliminar.Location = New System.Drawing.Point(344, 459)
+        Me.btnEliminar.Name = "btnEliminar"
+        Me.btnEliminar.Size = New System.Drawing.Size(160, 57)
+        Me.btnEliminar.TabIndex = 4
+        Me.btnEliminar.Text = "Eliminar"
+        Me.btnEliminar.UseVisualStyleBackColor = True
         '
         'Productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1152, 627)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.btnEliminar)
+        Me.Controls.Add(Me.btnModificar)
+        Me.Controls.Add(Me.btnAgregar)
+        Me.Controls.Add(Me.dgvProductos)
         Me.Name = "Productos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Productos"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvProductos As DataGridView
+    Friend WithEvents btnAgregar As Button
+    Friend WithEvents btnModificar As Button
+    Friend WithEvents btnEliminar As Button
 End Class

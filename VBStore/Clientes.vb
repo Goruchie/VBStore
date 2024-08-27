@@ -43,24 +43,6 @@ Public Class Clientes
     Private Sub dgvClientes_SelectionChanged(sender As Object, e As EventArgs) Handles dgvClientes.SelectionChanged
         Dim seleccionado As Cliente = CType(dgvClientes.CurrentRow.DataBoundItem, Cliente)
     End Sub
-
-    'StoreServices service = New StoreServices();
-    '        Item selected;
-    '        If (dgvStore.CurrentRow == null)
-    '        {
-    '            MessageBox.Show("You must select an item to delete.");
-    '            Return;
-    '        }
-    '        Try
-    '        {
-    '            DialogResult answer = MessageBox.Show("Are you sure you want to delete this item?", "Deleted", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-    '            If (answer == DialogResult.Yes)
-    '            {
-    '            selected = (Item)dgvStore.CurrentRow.DataBoundItem;
-    '            service.delete(selected.Id);
-    '            load();
-    '            }
-    '        }
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Dim negocio As ClienteNegocios = New ClienteNegocios()
         Dim seleccionado As Cliente
@@ -76,7 +58,7 @@ Public Class Clientes
                 LoadDgv()
             End If
         Catch ex As Exception
-
+            MessageBox.Show(ex.ToString())
         End Try
     End Sub
 End Class
