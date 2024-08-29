@@ -120,10 +120,10 @@
     <Compile Include="Productos.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventas.Designer.vb">
-      <DependentUpon>Ventas.vb</DependentUpon>
+    <Compile Include="NuevaVenta.Designer.vb">
+      <DependentUpon>NuevaVenta.vb</DependentUpon>
     </Compile>
-    <Compile Include="Ventas.vb">
+    <Compile Include="NuevaVenta.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -149,8 +149,8 @@
     <EmbeddedResource Include="Productos.resx">
       <DependentUpon>Productos.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventas.resx">
-      <DependentUpon>Ventas.vb</DependentUpon>
+    <EmbeddedResource Include="NuevaVenta.resx">
+      <DependentUpon>NuevaVenta.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

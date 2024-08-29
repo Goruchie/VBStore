@@ -47,6 +47,17 @@ Public Class AccesoDatos
     Public Sub SetearParametro(ByVal name As String, ByVal value As Object)
         comando.Parameters.AddWithValue(name, value)
     End Sub
+    Public Function EjecutarEscalar() As Object
+        comando.Connection = conexion
+        Try
+            conexion.Open()
+            Return comando.ExecuteScalar()
+        Catch ex As Exception
+            Throw ex
+        Finally
+            CerrarConexion()
+        End Try
+    End Function
 
     Public Sub CerrarConexion()
         If Lector IsNot Nothing Then

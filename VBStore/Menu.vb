@@ -17,7 +17,7 @@ Public Class Menu
     End Sub
 
     Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
-        Dim ventas As New Ventas()
+        Dim ventas As New frmNuevaVenta()
         ventas.ShowDialog()
     End Sub
 End Class
