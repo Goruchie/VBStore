@@ -34,7 +34,7 @@ Partial Class NuevoProducto
         '
         'btnAceptarP
         '
-        Me.btnAceptarP.Location = New System.Drawing.Point(301, 356)
+        Me.btnAceptarP.Location = New System.Drawing.Point(171, 321)
         Me.btnAceptarP.Name = "btnAceptarP"
         Me.btnAceptarP.Size = New System.Drawing.Size(116, 45)
         Me.btnAceptarP.TabIndex = 16
@@ -43,7 +43,7 @@ Partial Class NuevoProducto
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(434, 356)
+        Me.btnCancelar.Location = New System.Drawing.Point(304, 321)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(116, 45)
         Me.btnCancelar.TabIndex = 15
@@ -52,21 +52,21 @@ Partial Class NuevoProducto
         '
         'txtCategoria
         '
-        Me.txtCategoria.Location = New System.Drawing.Point(301, 232)
+        Me.txtCategoria.Location = New System.Drawing.Point(200, 233)
         Me.txtCategoria.Name = "txtCategoria"
         Me.txtCategoria.Size = New System.Drawing.Size(308, 31)
         Me.txtCategoria.TabIndex = 14
         '
         'txtPrecio
         '
-        Me.txtPrecio.Location = New System.Drawing.Point(301, 138)
+        Me.txtPrecio.Location = New System.Drawing.Point(200, 139)
         Me.txtPrecio.Name = "txtPrecio"
         Me.txtPrecio.Size = New System.Drawing.Size(308, 31)
         Me.txtPrecio.TabIndex = 13
         '
         'txtNombre
         '
-        Me.txtNombre.Location = New System.Drawing.Point(301, 49)
+        Me.txtNombre.Location = New System.Drawing.Point(200, 50)
         Me.txtNombre.Name = "txtNombre"
         Me.txtNombre.Size = New System.Drawing.Size(308, 31)
         Me.txtNombre.TabIndex = 12
@@ -74,7 +74,7 @@ Partial Class NuevoProducto
         'lblCategoriaP
         '
         Me.lblCategoriaP.AutoSize = True
-        Me.lblCategoriaP.Location = New System.Drawing.Point(184, 238)
+        Me.lblCategoriaP.Location = New System.Drawing.Point(83, 239)
         Me.lblCategoriaP.Name = "lblCategoriaP"
         Me.lblCategoriaP.Size = New System.Drawing.Size(111, 25)
         Me.lblCategoriaP.TabIndex = 11
@@ -83,7 +83,7 @@ Partial Class NuevoProducto
         'lblPrecioP
         '
         Me.lblPrecioP.AutoSize = True
-        Me.lblPrecioP.Location = New System.Drawing.Point(216, 144)
+        Me.lblPrecioP.Location = New System.Drawing.Point(115, 145)
         Me.lblPrecioP.Name = "lblPrecioP"
         Me.lblPrecioP.Size = New System.Drawing.Size(79, 25)
         Me.lblPrecioP.TabIndex = 10
@@ -92,7 +92,7 @@ Partial Class NuevoProducto
         'lblNombreP
         '
         Me.lblNombreP.AutoSize = True
-        Me.lblNombreP.Location = New System.Drawing.Point(202, 52)
+        Me.lblNombreP.Location = New System.Drawing.Point(101, 53)
         Me.lblNombreP.Name = "lblNombreP"
         Me.lblNombreP.Size = New System.Drawing.Size(93, 25)
         Me.lblNombreP.TabIndex = 9
@@ -102,7 +102,7 @@ Partial Class NuevoProducto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(590, 416)
         Me.Controls.Add(Me.btnAceptarP)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.txtCategoria)
@@ -111,7 +111,11 @@ Partial Class NuevoProducto
         Me.Controls.Add(Me.lblCategoriaP)
         Me.Controls.Add(Me.lblPrecioP)
         Me.Controls.Add(Me.lblNombreP)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(616, 487)
+        Me.MinimumSize = New System.Drawing.Size(616, 487)
         Me.Name = "NuevoProducto"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "NuevoProducto"
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -66,4 +66,76 @@ Public Class ClienteNegocios
             Throw ex
         End Try
     End Sub
+
+    Public Function Filtrar(campo As String, criterio As String, buscar As String) As List(Of Cliente)
+        Dim lista As New List(Of Cliente)()
+        Dim data As New AccesoDatos()
+
+        Try
+            Dim query As String = "SELECT Cliente, Telefono, Correo, ID FROM clientes WHERE "
+
+            If campo = "Id" Then
+                Select Case criterio
+                    Case "Menor que"
+                        query &= "Id < " & buscar
+                    Case "Mayor que"
+                        query &= "Id > " & buscar
+                    Case Else
+                        query &= "Id = " & buscar
+                End Select
+
+            ElseIf campo = "Teléfono" Then
+                Select Case criterio
+                    Case "Comienza con"
+                        query &= "Telefono LIKE '" & buscar & "%'"
+                    Case "Termina con"
+                        query &= "Telefono LIKE '%" & buscar & "'"
+                    Case Else
+                        query &= "Telefono LIKE '%" & buscar & "%'"
+                End Select
+
+            ElseIf campo = "Cliente" Then
+                Select Case criterio
+                    Case "Comienza con"
+                        query &= "Cliente LIKE '" & buscar & "%'"
+                    Case "Termina con"
+                        query &= "Cliente LIKE '%" & buscar & "'"
+                    Case Else
+                        query &= "Cliente LIKE '%" & buscar & "%'"
+                End Select
+
+            ElseIf campo = "Correo" Then
+                Select Case criterio
+                    Case "Comienza con"
+                        query &= "Correo LIKE '" & buscar & "%'"
+                    Case "Termina con"
+                        query &= "Correo LIKE '%" & buscar & "'"
+                    Case Else
+                        query &= "Correo LIKE '%" & buscar & "%'"
+                End Select
+
+            End If
+
+            data.SetQuery(query)
+            data.EjecutarLectura()
+
+            While data.Lector.Read()
+                Dim aux As New Cliente()
+                aux.Id = Convert.ToInt32(data.Lector("Id"))
+                aux.Cliente = Convert.ToString(data.Lector("Cliente"))
+                aux.Telefono = Convert.ToString(data.Lector("Telefono"))
+                aux.Correo = Convert.ToString(data.Lector("Correo"))
+
+                lista.Add(aux)
+            End While
+
+            Return lista
+
+        Catch ex As Exception
+            Throw ex
+        Finally
+            data.CerrarConexion()
+        End Try
+    End Function
+
 End Class

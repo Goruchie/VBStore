@@ -35,7 +35,7 @@ Partial Class NuevoCliente
         'lblCliente
         '
         Me.lblCliente.AutoSize = True
-        Me.lblCliente.Location = New System.Drawing.Point(218, 60)
+        Me.lblCliente.Location = New System.Drawing.Point(79, 72)
         Me.lblCliente.Name = "lblCliente"
         Me.lblCliente.Size = New System.Drawing.Size(85, 25)
         Me.lblCliente.TabIndex = 0
@@ -44,7 +44,7 @@ Partial Class NuevoCliente
         'lblTelefono
         '
         Me.lblTelefono.AutoSize = True
-        Me.lblTelefono.Location = New System.Drawing.Point(201, 152)
+        Me.lblTelefono.Location = New System.Drawing.Point(62, 164)
         Me.lblTelefono.Name = "lblTelefono"
         Me.lblTelefono.Size = New System.Drawing.Size(102, 25)
         Me.lblTelefono.TabIndex = 1
@@ -53,7 +53,7 @@ Partial Class NuevoCliente
         'lblCorreo
         '
         Me.lblCorreo.AutoSize = True
-        Me.lblCorreo.Location = New System.Drawing.Point(220, 246)
+        Me.lblCorreo.Location = New System.Drawing.Point(81, 258)
         Me.lblCorreo.Name = "lblCorreo"
         Me.lblCorreo.Size = New System.Drawing.Size(83, 25)
         Me.lblCorreo.TabIndex = 2
@@ -61,28 +61,28 @@ Partial Class NuevoCliente
         '
         'txtCliente
         '
-        Me.txtCliente.Location = New System.Drawing.Point(310, 60)
+        Me.txtCliente.Location = New System.Drawing.Point(171, 72)
         Me.txtCliente.Name = "txtCliente"
-        Me.txtCliente.Size = New System.Drawing.Size(308, 31)
+        Me.txtCliente.Size = New System.Drawing.Size(255, 31)
         Me.txtCliente.TabIndex = 3
         '
         'txtTelefono
         '
-        Me.txtTelefono.Location = New System.Drawing.Point(310, 149)
+        Me.txtTelefono.Location = New System.Drawing.Point(171, 161)
         Me.txtTelefono.Name = "txtTelefono"
-        Me.txtTelefono.Size = New System.Drawing.Size(308, 31)
+        Me.txtTelefono.Size = New System.Drawing.Size(255, 31)
         Me.txtTelefono.TabIndex = 4
         '
         'txtCorreo
         '
-        Me.txtCorreo.Location = New System.Drawing.Point(310, 243)
+        Me.txtCorreo.Location = New System.Drawing.Point(171, 255)
         Me.txtCorreo.Name = "txtCorreo"
-        Me.txtCorreo.Size = New System.Drawing.Size(308, 31)
+        Me.txtCorreo.Size = New System.Drawing.Size(255, 31)
         Me.txtCorreo.TabIndex = 5
         '
         'btnCancelar
         '
-        Me.btnCancelar.Location = New System.Drawing.Point(443, 367)
+        Me.btnCancelar.Location = New System.Drawing.Point(253, 340)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(116, 45)
         Me.btnCancelar.TabIndex = 7
@@ -91,7 +91,7 @@ Partial Class NuevoCliente
         '
         'btnAceptarC
         '
-        Me.btnAceptarC.Location = New System.Drawing.Point(310, 367)
+        Me.btnAceptarC.Location = New System.Drawing.Point(120, 340)
         Me.btnAceptarC.Name = "btnAceptarC"
         Me.btnAceptarC.Size = New System.Drawing.Size(116, 45)
         Me.btnAceptarC.TabIndex = 8
@@ -102,7 +102,7 @@ Partial Class NuevoCliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(488, 433)
         Me.Controls.Add(Me.btnAceptarC)
         Me.Controls.Add(Me.btnCancelar)
         Me.Controls.Add(Me.txtCorreo)
@@ -111,7 +111,11 @@ Partial Class NuevoCliente
         Me.Controls.Add(Me.lblCorreo)
         Me.Controls.Add(Me.lblTelefono)
         Me.Controls.Add(Me.lblCliente)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(514, 504)
+        Me.MinimumSize = New System.Drawing.Size(514, 504)
         Me.Name = "NuevoCliente"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "NuevoCliente"
         Me.ResumeLayout(False)
         Me.PerformLayout()

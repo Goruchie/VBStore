@@ -74,6 +74,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Carrito.Designer.vb">
+      <DependentUpon>Carrito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Carrito.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Clientes.Designer.vb">
       <DependentUpon>Clientes.vb</DependentUpon>
     </Compile>
@@ -85,6 +91,18 @@
     </Compile>
     <Compile Include="Menu.Designer.vb">
       <DependentUpon>Menu.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarCarrito.Designer.vb">
+      <DependentUpon>ModificarCarrito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarCarrito.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModificarVenta.Designer.vb">
+      <DependentUpon>ModificarVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarVenta.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -126,13 +144,28 @@
     <Compile Include="NuevaVenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Ventas.Designer.vb">
+      <DependentUpon>Ventas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Carrito.resx">
+      <DependentUpon>Carrito.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes.resx">
       <DependentUpon>Clientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarCarrito.resx">
+      <DependentUpon>ModificarCarrito.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModificarVenta.resx">
+      <DependentUpon>ModificarVenta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -151,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NuevaVenta.resx">
       <DependentUpon>NuevaVenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventas.resx">
+      <DependentUpon>Ventas.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

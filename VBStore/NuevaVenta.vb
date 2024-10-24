@@ -37,8 +37,8 @@ Public Class frmNuevaVenta
     Private Sub dgvClientesV_SelectionChanged(sender As Object, e As EventArgs) Handles dgvClientesV.SelectionChanged
         Dim seleccionado As Cliente = CType(dgvClientesV.CurrentRow.DataBoundItem, Cliente)
         If selectedIndex >= 0 Then
-            dgvClientesV.ClearSelection() ' Limpiar cualquier selección actual
-            dgvClientesV.Rows(selectedIndex).Selected = True ' Forzar la selección del cliente guardado
+            dgvClientesV.ClearSelection()
+            dgvClientesV.Rows(selectedIndex).Selected = True
         End If
     End Sub
 
@@ -74,7 +74,7 @@ Public Class frmNuevaVenta
         End If
     End Sub
 
-    'Venta
+    'Carrito
 
     Private Sub ocultarColumnasV()
         dgvNuevaVenta.Columns("IdProducto").Visible = False
@@ -82,20 +82,29 @@ Public Class frmNuevaVenta
 
     Private selectedIndex As Integer = -1
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
+
+        If dgvClientesV.CurrentRow Is Nothing Then
+            MessageBox.Show("Por favor, selecciona un cliente antes de agregar productos.")
+            Return
+        End If
+
+        If dgvProductosV.CurrentRow Is Nothing Then
+            MessageBox.Show("Por favor, selecciona un producto antes de agregar productos.")
+            Return
+        End If
         Dim cSeleccionado As Cliente = CType(dgvClientesV.CurrentRow.DataBoundItem, Cliente)
         Dim pSeleccionado As Producto = CType(dgvProductosV.CurrentRow.DataBoundItem, Producto)
 
         If dgvClientesV.CurrentRow IsNot Nothing Then
             selectedIndex = dgvClientesV.CurrentRow.Index
-            dgvClientesV.Enabled = False ' Deshabilita el DataGridView para evitar más selecciones
+            dgvClientesV.Enabled = False
         End If
-
+        If numCantidad.Value = 0 Then
+            MessageBox.Show("No es posible ingresar cantidad 0 de un producto.")
+            Return
+        End If
         dgvNuevaVenta.Rows.Add(pSeleccionado.Id, pSeleccionado, lblPrecioUR.Text, numCantidad.Value, lblPrecioTR.Text)
-
-    End Sub
-
-    Private Sub btnVender_Click(sender As Object, e As EventArgs) Handles btnVender.Click
-        ' Calcular el total de la venta
+        numCantidad.Value = 1
         Dim sumatotal As Decimal = 0
         For Each row As DataGridViewRow In dgvNuevaVenta.Rows
             If Not row.IsNewRow Then
@@ -103,23 +112,22 @@ Public Class frmNuevaVenta
             End If
         Next
         lblTotalR.Text = sumatotal.ToString("c")
+    End Sub
 
-        ' Crear la instancia de Venta y asignar los valores
+    Private Sub btnVender_Click(sender As Object, e As EventArgs) Handles btnVender.Click
         Dim nuevaVenta As New Venta()
         nuevaVenta.Cliente = CType(dgvClientesV.CurrentRow.DataBoundItem, Cliente)
         nuevaVenta.Fecha = DateTime.Now
         nuevaVenta.Total = lblTotalR.Text
 
-        ' Insertar la venta en la base de datos y obtener el ID generado
         Dim ventaNegocios As New VentaNegocios()
         Try
-            ventaNegocios.agregar(nuevaVenta) ' Esto asignará el Id de la venta creada a nuevaVenta.Id
+            ventaNegocios.agregar(nuevaVenta)
         Catch ex As Exception
             MessageBox.Show("Error al agregar la venta: " & ex.Message)
             Return
         End Try
 
-        ' Iterar sobre las filas de la DataGridView para insertar cada VentaItem
         For Each row As DataGridViewRow In dgvNuevaVenta.Rows
             If Not row.IsNewRow Then
                 Dim nuevoItem As New VentaItem()
@@ -127,11 +135,8 @@ Public Class frmNuevaVenta
                 nuevoItem.Cantidad = Convert.ToInt32(row.Cells("Cantidad").Value)
                 nuevoItem.PrecioTotal = Convert.ToDecimal(row.Cells("PrecioTotal").Value)
                 nuevoItem.Producto = CType(row.Cells("Producto").Value, Producto)
+                nuevoItem.Venta = nuevaVenta
 
-                ' Asociar el VentaItem a la Venta recién creada
-                nuevoItem.Venta = nuevaVenta ' Vincula el VentaItem a la Venta con el ID correcto
-
-                ' Insertar el VentaItem en la base de datos
                 Dim ventaItemNegocios As New VentaItemNegocios()
                 Try
                     ventaItemNegocios.agregar(nuevoItem)
@@ -141,6 +146,20 @@ Public Class frmNuevaVenta
             End If
         Next
 
-        MessageBox.Show("Compra realizada exitosamente.")
+        MessageBox.Show("Venta realizada exitosamente.")
+        Close()
+    End Sub
+
+    Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
+        If dgvNuevaVenta.Rows.Count > 0 Then
+            Dim respuesta As DialogResult = MessageBox.Show("¿Estás seguro de que deseas limpiar el carrito?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            If respuesta = DialogResult.Yes Then
+                dgvNuevaVenta.Rows.Clear()
+                dgvClientesV.Enabled = True
+                MessageBox.Show("El carrito ha sido limpiado.")
+            End If
+        Else
+            MessageBox.Show("El carrito ya está vacío.")
+        End If
     End Sub
 End Class

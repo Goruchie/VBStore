@@ -16,8 +16,13 @@ Public Class Menu
         productos.ShowDialog()
     End Sub
 
-    Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVentas.Click
-        Dim ventas As New frmNuevaVenta()
+    Private Sub btnVentas_Click(sender As Object, e As EventArgs) Handles btnVender.Click
+        Dim vender As New frmNuevaVenta()
+        vender.ShowDialog()
+    End Sub
+
+    Private Sub btnVentas_Click_1(sender As Object, e As EventArgs) Handles btnVentas.Click
+        Dim ventas As New Ventas()
         ventas.ShowDialog()
     End Sub
 End Class

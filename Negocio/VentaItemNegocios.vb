@@ -1,42 +1,28 @@
 ﻿Imports dominio
 
 Public Class VentaItemNegocios
-    Public Function List() As List(Of VentaItem)
+    Public Function List(ventaId As Integer) As List(Of VentaItem)
         Dim ventaItems As New List(Of VentaItem)()
         Dim data As New AccesoDatos()
         Try
-            data.SetQuery("SELECT ventas.ID AS VentaID, ventas.Fecha, ventas.Total, clientes.ID AS ClienteID, clientes.Cliente, clientes.Telefono, clientes.Correo,  
-                productos.ID AS ProductoID, productos.Nombre, productos.Precio, ventasitems.Cantidad, ventasitems.PrecioTotal, ventasitems.PrecioUnitario  
-                FROM ventas  
-                JOIN clientes ON ventas.IDCliente = clientes.ID  
-                JOIN ventasitems ON ventas.ID = ventasitems.IDVenta  
-                JOIN productos ON ventasitems.IDProducto = productos.ID")
-
+            data.SetQuery("select I.ID, IDVenta, I.IDProducto, PrecioUnitario, Cantidad, PrecioTotal, V.Total, V.ID, P.ID, P.Nombre from ventasitems I, ventas V, productos P Where V.Id = I.IDVenta And P.ID = I.IDProducto and IDVenta = @VentaId")
+            data.SetearParametro("@VentaId", ventaId)
             data.EjecutarLectura()
             While data.Lector.Read()
                 Dim aux As New VentaItem()
-                aux.Id = Convert.ToInt32(data.Lector("VentaID"))
+
+                aux.Id = Convert.ToInt32(data.Lector("ID"))
+                aux.IDVenta = Convert.ToInt32(data.Lector("IDVenta"))
+                aux.IdProducto = Convert.ToInt32(data.Lector("IDProducto"))
                 aux.PrecioUnitario = Convert.ToDouble(data.Lector("PrecioUnitario"))
                 aux.Cantidad = Convert.ToInt32(data.Lector("Cantidad"))
                 aux.PrecioTotal = Convert.ToDouble(data.Lector("PrecioTotal"))
-
-                aux.Venta = New Venta()
-                aux.Venta.Id = Convert.ToInt32(data.Lector("VentaID"))
-                aux.Venta.Fecha = Convert.ToDateTime(data.Lector("Fecha"))
-                aux.Venta.Total = Convert.ToDecimal(data.Lector("Total"))
-
                 aux.Producto = New Producto()
-                aux.Producto.Id = Convert.ToInt32(data.Lector("ProductoID"))
+                aux.Producto.Id = Convert.ToInt32(data.Lector("Id"))
                 aux.Producto.Nombre = Convert.ToString(data.Lector("Nombre"))
-                aux.Producto.Precio = Convert.ToDecimal(data.Lector("Precio"))
-
-
-                aux.Venta.Cliente = New Cliente()
-                aux.Venta.Cliente.Id = Convert.ToInt32(data.Lector("ClienteID"))
-                aux.Venta.Cliente.Cliente = Convert.ToString(data.Lector("Cliente"))
-                aux.Venta.Cliente.Telefono = Convert.ToString(data.Lector("Telefono"))
-                aux.Venta.Cliente.Correo = Convert.ToString(data.Lector("Correo"))
-
+                aux.Venta = New Venta()
+                aux.Venta.Id = Convert.ToInt32(data.Lector("ID"))
+                aux.Venta.Total = Convert.ToDecimal(data.Lector("Total"))
 
                 ventaItems.Add(aux)
             End While
@@ -62,6 +48,43 @@ Public Class VentaItemNegocios
             Throw ex
         Finally
             data.CerrarConexion()
+        End Try
+    End Sub
+    Public Sub modificar(modificado As VentaItem)
+        Dim data As New AccesoDatos()
+        Try
+            data.SetQuery("update ventasitems Set PrecioUnitario = @PrecioUnitario, Cantidad = @Cantidad, PrecioTotal = @PrecioTotal, IDProducto = @IDProducto Where ID = @id")
+            data.SetearParametro("@PrecioUnitario", modificado.PrecioUnitario)
+            data.SetearParametro("@Cantidad", modificado.Cantidad)
+            data.SetearParametro("@PrecioTotal", modificado.PrecioTotal)
+            data.SetearParametro("@IDProducto", modificado.IDProducto)
+            data.SetearParametro("Id", modificado.Id)
+
+            data.EjecutarAccion()
+        Catch ex As Exception
+            Throw ex
+        Finally
+            data.CerrarConexion()
+        End Try
+    End Sub
+    Public Sub eliminar(id As Int32)
+        Try
+            Dim data As AccesoDatos = New AccesoDatos()
+            data.SetQuery("delete from ventasitems where id = @id")
+            data.SetearParametro("@id", id)
+            data.EjecutarAccion()
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+    Public Sub EliminarPorVentaId(ventaId As Int32)
+        Try
+            Dim data As AccesoDatos = New AccesoDatos()
+            data.SetQuery("DELETE FROM ventasitems WHERE IDVenta = @VentaId")
+            data.SetearParametro("@VentaId", ventaId)
+            data.EjecutarAccion()
+        Catch ex As Exception
+
         End Try
     End Sub
 End Class

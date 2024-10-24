@@ -23,6 +23,11 @@ Partial Class frmNuevaVenta
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.dgvNuevaVenta = New System.Windows.Forms.DataGridView()
+        Me.IdProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioU = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrecioTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dgvClientesV = New System.Windows.Forms.DataGridView()
         Me.dgvProductosV = New System.Windows.Forms.DataGridView()
         Me.lblFecha = New System.Windows.Forms.Label()
@@ -36,11 +41,6 @@ Partial Class frmNuevaVenta
         Me.lblPrecioUR = New System.Windows.Forms.Label()
         Me.lblPrecioTR = New System.Windows.Forms.Label()
         Me.btnVender = New System.Windows.Forms.Button()
-        Me.IdProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Producto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioU = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrecioTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblCarrito = New System.Windows.Forms.Label()
         Me.lblTotal = New System.Windows.Forms.Label()
         Me.lblTotalR = New System.Windows.Forms.Label()
@@ -55,132 +55,16 @@ Partial Class frmNuevaVenta
         Me.dgvNuevaVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvNuevaVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvNuevaVenta.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdProducto, Me.Producto, Me.PrecioU, Me.Cantidad, Me.PrecioTotal})
-        Me.dgvNuevaVenta.Location = New System.Drawing.Point(12, 382)
+        Me.dgvNuevaVenta.Location = New System.Drawing.Point(12, 300)
+        Me.dgvNuevaVenta.MultiSelect = False
         Me.dgvNuevaVenta.Name = "dgvNuevaVenta"
+        Me.dgvNuevaVenta.ReadOnly = True
         Me.dgvNuevaVenta.RowHeadersVisible = False
         Me.dgvNuevaVenta.RowHeadersWidth = 82
         Me.dgvNuevaVenta.RowTemplate.Height = 33
+        Me.dgvNuevaVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvNuevaVenta.Size = New System.Drawing.Size(833, 337)
         Me.dgvNuevaVenta.TabIndex = 1
-        '
-        'dgvClientesV
-        '
-        Me.dgvClientesV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvClientesV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvClientesV.Location = New System.Drawing.Point(12, 12)
-        Me.dgvClientesV.Name = "dgvClientesV"
-        Me.dgvClientesV.RowHeadersVisible = False
-        Me.dgvClientesV.RowHeadersWidth = 82
-        Me.dgvClientesV.RowTemplate.Height = 33
-        Me.dgvClientesV.Size = New System.Drawing.Size(281, 339)
-        Me.dgvClientesV.TabIndex = 2
-        '
-        'dgvProductosV
-        '
-        Me.dgvProductosV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvProductosV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvProductosV.Location = New System.Drawing.Point(313, 12)
-        Me.dgvProductosV.Name = "dgvProductosV"
-        Me.dgvProductosV.RowHeadersVisible = False
-        Me.dgvProductosV.RowHeadersWidth = 82
-        Me.dgvProductosV.RowTemplate.Height = 33
-        Me.dgvProductosV.Size = New System.Drawing.Size(532, 339)
-        Me.dgvProductosV.TabIndex = 3
-        '
-        'lblFecha
-        '
-        Me.lblFecha.AutoSize = True
-        Me.lblFecha.Location = New System.Drawing.Point(941, 52)
-        Me.lblFecha.Name = "lblFecha"
-        Me.lblFecha.Size = New System.Drawing.Size(78, 25)
-        Me.lblFecha.TabIndex = 4
-        Me.lblFecha.Text = "Fecha:"
-        '
-        'lblPrecioU
-        '
-        Me.lblPrecioU.AutoSize = True
-        Me.lblPrecioU.Location = New System.Drawing.Point(919, 106)
-        Me.lblPrecioU.Name = "lblPrecioU"
-        Me.lblPrecioU.Size = New System.Drawing.Size(100, 25)
-        Me.lblPrecioU.TabIndex = 5
-        Me.lblPrecioU.Text = "Precio/U:"
-        '
-        'lblCantidad
-        '
-        Me.lblCantidad.AutoSize = True
-        Me.lblCantidad.Location = New System.Drawing.Point(915, 168)
-        Me.lblCantidad.Name = "lblCantidad"
-        Me.lblCantidad.Size = New System.Drawing.Size(104, 25)
-        Me.lblCantidad.TabIndex = 6
-        Me.lblCantidad.Text = "Cantidad:"
-        '
-        'lblPrecioT
-        '
-        Me.lblPrecioT.AutoSize = True
-        Me.lblPrecioT.Location = New System.Drawing.Point(886, 224)
-        Me.lblPrecioT.Name = "lblPrecioT"
-        Me.lblPrecioT.Size = New System.Drawing.Size(133, 25)
-        Me.lblPrecioT.TabIndex = 7
-        Me.lblPrecioT.Text = "Precio Total:"
-        '
-        'btnAgregar
-        '
-        Me.btnAgregar.Location = New System.Drawing.Point(891, 272)
-        Me.btnAgregar.Name = "btnAgregar"
-        Me.btnAgregar.Size = New System.Drawing.Size(246, 79)
-        Me.btnAgregar.TabIndex = 8
-        Me.btnAgregar.Text = "Agregar al carrito"
-        Me.btnAgregar.UseVisualStyleBackColor = True
-        '
-        'btnLimpiar
-        '
-        Me.btnLimpiar.Location = New System.Drawing.Point(851, 620)
-        Me.btnLimpiar.Name = "btnLimpiar"
-        Me.btnLimpiar.Size = New System.Drawing.Size(138, 99)
-        Me.btnLimpiar.TabIndex = 9
-        Me.btnLimpiar.Text = "Limpiar Carrito"
-        Me.btnLimpiar.UseVisualStyleBackColor = True
-        '
-        'numCantidad
-        '
-        Me.numCantidad.Location = New System.Drawing.Point(1025, 166)
-        Me.numCantidad.Name = "numCantidad"
-        Me.numCantidad.Size = New System.Drawing.Size(97, 31)
-        Me.numCantidad.TabIndex = 14
-        Me.numCantidad.Value = New Decimal(New Integer() {1, 0, 0, 0})
-        '
-        'lblFechaActual
-        '
-        Me.lblFechaActual.AutoSize = True
-        Me.lblFechaActual.Location = New System.Drawing.Point(1021, 52)
-        Me.lblFechaActual.Name = "lblFechaActual"
-        Me.lblFechaActual.Size = New System.Drawing.Size(0, 25)
-        Me.lblFechaActual.TabIndex = 15
-        '
-        'lblPrecioUR
-        '
-        Me.lblPrecioUR.AutoSize = True
-        Me.lblPrecioUR.Location = New System.Drawing.Point(1020, 106)
-        Me.lblPrecioUR.Name = "lblPrecioUR"
-        Me.lblPrecioUR.Size = New System.Drawing.Size(0, 25)
-        Me.lblPrecioUR.TabIndex = 16
-        '
-        'lblPrecioTR
-        '
-        Me.lblPrecioTR.AutoSize = True
-        Me.lblPrecioTR.Location = New System.Drawing.Point(1020, 224)
-        Me.lblPrecioTR.Name = "lblPrecioTR"
-        Me.lblPrecioTR.Size = New System.Drawing.Size(0, 25)
-        Me.lblPrecioTR.TabIndex = 17
-        '
-        'btnVender
-        '
-        Me.btnVender.Location = New System.Drawing.Point(995, 620)
-        Me.btnVender.Name = "btnVender"
-        Me.btnVender.Size = New System.Drawing.Size(138, 99)
-        Me.btnVender.TabIndex = 18
-        Me.btnVender.Text = "Vender"
-        Me.btnVender.UseVisualStyleBackColor = True
         '
         'IdProducto
         '
@@ -208,6 +92,7 @@ Partial Class frmNuevaVenta
         Me.Cantidad.HeaderText = "Cantidad"
         Me.Cantidad.MinimumWidth = 10
         Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
         Me.Cantidad.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
         '
         'PrecioTotal
@@ -217,11 +102,137 @@ Partial Class frmNuevaVenta
         Me.PrecioTotal.Name = "PrecioTotal"
         Me.PrecioTotal.ReadOnly = True
         '
+        'dgvClientesV
+        '
+        Me.dgvClientesV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvClientesV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvClientesV.Location = New System.Drawing.Point(12, 12)
+        Me.dgvClientesV.MultiSelect = False
+        Me.dgvClientesV.Name = "dgvClientesV"
+        Me.dgvClientesV.ReadOnly = True
+        Me.dgvClientesV.RowHeadersVisible = False
+        Me.dgvClientesV.RowHeadersWidth = 82
+        Me.dgvClientesV.RowTemplate.Height = 33
+        Me.dgvClientesV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvClientesV.Size = New System.Drawing.Size(281, 269)
+        Me.dgvClientesV.TabIndex = 2
+        '
+        'dgvProductosV
+        '
+        Me.dgvProductosV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvProductosV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvProductosV.Location = New System.Drawing.Point(313, 12)
+        Me.dgvProductosV.MultiSelect = False
+        Me.dgvProductosV.Name = "dgvProductosV"
+        Me.dgvProductosV.ReadOnly = True
+        Me.dgvProductosV.RowHeadersVisible = False
+        Me.dgvProductosV.RowHeadersWidth = 82
+        Me.dgvProductosV.RowTemplate.Height = 33
+        Me.dgvProductosV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvProductosV.Size = New System.Drawing.Size(532, 269)
+        Me.dgvProductosV.TabIndex = 3
+        '
+        'lblFecha
+        '
+        Me.lblFecha.AutoSize = True
+        Me.lblFecha.Location = New System.Drawing.Point(953, 12)
+        Me.lblFecha.Name = "lblFecha"
+        Me.lblFecha.Size = New System.Drawing.Size(78, 25)
+        Me.lblFecha.TabIndex = 4
+        Me.lblFecha.Text = "Fecha:"
+        '
+        'lblPrecioU
+        '
+        Me.lblPrecioU.AutoSize = True
+        Me.lblPrecioU.Location = New System.Drawing.Point(931, 66)
+        Me.lblPrecioU.Name = "lblPrecioU"
+        Me.lblPrecioU.Size = New System.Drawing.Size(100, 25)
+        Me.lblPrecioU.TabIndex = 5
+        Me.lblPrecioU.Text = "Precio/U:"
+        '
+        'lblCantidad
+        '
+        Me.lblCantidad.AutoSize = True
+        Me.lblCantidad.Location = New System.Drawing.Point(927, 128)
+        Me.lblCantidad.Name = "lblCantidad"
+        Me.lblCantidad.Size = New System.Drawing.Size(104, 25)
+        Me.lblCantidad.TabIndex = 6
+        Me.lblCantidad.Text = "Cantidad:"
+        '
+        'lblPrecioT
+        '
+        Me.lblPrecioT.AutoSize = True
+        Me.lblPrecioT.Location = New System.Drawing.Point(898, 184)
+        Me.lblPrecioT.Name = "lblPrecioT"
+        Me.lblPrecioT.Size = New System.Drawing.Size(133, 25)
+        Me.lblPrecioT.TabIndex = 7
+        Me.lblPrecioT.Text = "Precio Total:"
+        '
+        'btnAgregar
+        '
+        Me.btnAgregar.Location = New System.Drawing.Point(903, 223)
+        Me.btnAgregar.Name = "btnAgregar"
+        Me.btnAgregar.Size = New System.Drawing.Size(246, 79)
+        Me.btnAgregar.TabIndex = 8
+        Me.btnAgregar.Text = "Agregar al carrito"
+        Me.btnAgregar.UseVisualStyleBackColor = True
+        '
+        'btnLimpiar
+        '
+        Me.btnLimpiar.Location = New System.Drawing.Point(863, 538)
+        Me.btnLimpiar.Name = "btnLimpiar"
+        Me.btnLimpiar.Size = New System.Drawing.Size(184, 99)
+        Me.btnLimpiar.TabIndex = 9
+        Me.btnLimpiar.Text = "Limpiar Carrito"
+        Me.btnLimpiar.UseVisualStyleBackColor = True
+        '
+        'numCantidad
+        '
+        Me.numCantidad.Location = New System.Drawing.Point(1037, 126)
+        Me.numCantidad.Name = "numCantidad"
+        Me.numCantidad.ReadOnly = True
+        Me.numCantidad.Size = New System.Drawing.Size(97, 31)
+        Me.numCantidad.TabIndex = 14
+        Me.numCantidad.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        '
+        'lblFechaActual
+        '
+        Me.lblFechaActual.AutoSize = True
+        Me.lblFechaActual.Location = New System.Drawing.Point(1033, 12)
+        Me.lblFechaActual.Name = "lblFechaActual"
+        Me.lblFechaActual.Size = New System.Drawing.Size(0, 25)
+        Me.lblFechaActual.TabIndex = 15
+        '
+        'lblPrecioUR
+        '
+        Me.lblPrecioUR.AutoSize = True
+        Me.lblPrecioUR.Location = New System.Drawing.Point(1032, 66)
+        Me.lblPrecioUR.Name = "lblPrecioUR"
+        Me.lblPrecioUR.Size = New System.Drawing.Size(0, 25)
+        Me.lblPrecioUR.TabIndex = 16
+        '
+        'lblPrecioTR
+        '
+        Me.lblPrecioTR.AutoSize = True
+        Me.lblPrecioTR.Location = New System.Drawing.Point(1032, 184)
+        Me.lblPrecioTR.Name = "lblPrecioTR"
+        Me.lblPrecioTR.Size = New System.Drawing.Size(0, 25)
+        Me.lblPrecioTR.TabIndex = 17
+        '
+        'btnVender
+        '
+        Me.btnVender.Location = New System.Drawing.Point(1053, 538)
+        Me.btnVender.Name = "btnVender"
+        Me.btnVender.Size = New System.Drawing.Size(189, 99)
+        Me.btnVender.TabIndex = 18
+        Me.btnVender.Text = "Vender"
+        Me.btnVender.UseVisualStyleBackColor = True
+        '
         'lblCarrito
         '
         Me.lblCarrito.AutoSize = True
         Me.lblCarrito.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.125!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCarrito.Location = New System.Drawing.Point(915, 382)
+        Me.lblCarrito.Location = New System.Drawing.Point(958, 339)
         Me.lblCarrito.Name = "lblCarrito"
         Me.lblCarrito.Size = New System.Drawing.Size(151, 51)
         Me.lblCarrito.TabIndex = 19
@@ -230,7 +241,7 @@ Partial Class frmNuevaVenta
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(851, 516)
+        Me.lblTotal.Location = New System.Drawing.Point(898, 444)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(66, 25)
         Me.lblTotal.TabIndex = 20
@@ -239,7 +250,7 @@ Partial Class frmNuevaVenta
         'lblTotalR
         '
         Me.lblTotalR.AutoSize = True
-        Me.lblTotalR.Location = New System.Drawing.Point(915, 516)
+        Me.lblTotalR.Location = New System.Drawing.Point(962, 444)
         Me.lblTotalR.Name = "lblTotalR"
         Me.lblTotalR.Size = New System.Drawing.Size(0, 25)
         Me.lblTotalR.TabIndex = 21
@@ -248,7 +259,7 @@ Partial Class frmNuevaVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1149, 731)
+        Me.ClientSize = New System.Drawing.Size(1254, 649)
         Me.Controls.Add(Me.lblTotalR)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.lblCarrito)
@@ -266,6 +277,9 @@ Partial Class frmNuevaVenta
         Me.Controls.Add(Me.dgvProductosV)
         Me.Controls.Add(Me.dgvClientesV)
         Me.Controls.Add(Me.dgvNuevaVenta)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(1280, 720)
+        Me.MinimumSize = New System.Drawing.Size(1280, 720)
         Me.Name = "frmNuevaVenta"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Nueva Venta"

@@ -1,5 +1,6 @@
 ﻿Public Class Venta
     Public Property Id As Int32
+    Public Property IdCliente As Int32
     Public Property Fecha As DateTime
     Public Property Cliente As Cliente
     Public Property Total As Decimal
